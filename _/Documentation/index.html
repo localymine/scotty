@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Starter WP Theme Documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/docs.css">
+		<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="js/jquery.sticky.js"></script>
+		<script type="text/javascript">
+		    $(document).ready(function(){
+			    $("#doc-sidebar-nav").sticky({topSpacing:0});
+
+			    $('#doc-sidebar-nav .scroll').click(function(event){
+					event.preventDefault();
+
+					var full_url = this.href;
+					var parts = full_url.split("#");
+					var trgt = parts[1];
+					var target_offset = $("#"+trgt).offset();
+					var target_top = target_offset.top;
+					$('html, body').animate({scrollTop:target_top}, 1200);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<header id="header" class="row header">
+				<h1 class="logo-text">Starter</h1>
+				<h3 class="doc-slogan">One Page Responsive WordPress Theme</h3>
+			</header>
+			
+			<div class="row">
+				<div id="doc-sidebar" class="col-md-3">
+					<ul id="doc-sidebar-nav" class="">
+						<li><a class="scroll" href="#intro">Introduction</a></li>
+						<li>
+							<a class="scroll" href="#wordpress">Wordpress</a>
+							<ul>
+								<li><a class="scroll" href="#wpinstal">Wordpress Installation</a></li>
+								<li><a class="scroll" href="#wptheme">WP Theme Installation</a></li>
+							</ul>
+						</li>
+						<li>
+							<a class="scroll" href="#starter">Starter Theme Installation</a>
+							<ul>
+								<li><a class="scroll" href="#starterInstall">Starter Installation</a></li>
+								<li><a class="scroll" href="#essPlugins">starter Essential Plugins</a></li>
+								<li><a class="scroll" href="#permalink">Set Permalinks</a></li>
+								<li><a class="scroll" href="#demoImport">Demo Import</a></li>
+								<li><a class="scroll" href="#widgetImport">Widgets Setting Import</a></li>
+								<li><a class="scroll" href="#menusettings">Menu Settings ( required )</a></li>
+								<li><a class="scroll" href="#homepage">Set Static Home</a></li>
+							</ul>
+						</li>
+						<li><a class="scroll" href="#wppage">How to Create Page</a></li>
+						<li><a class="scroll" href="#postslider">Post Type Slider</a></li>
+						<li><a class="scroll" href="#postclient">Post Type Client</a></li>
+						<li><a class="scroll" href="#postproject">Post Type Porject</a></li>
+						<li><a class="scroll" href="#postteam">Post Type Team</a></li>
+						<li>
+							<a class="scroll" href="#scdoc">Shortcode</a>
+							<ul class="">
+								<li><a class="scroll" href="#wpclient">Client</a></li>
+								<li><a class="scroll" href="#wpslider">Slider</a></li>
+								<li><a class="scroll" href="#wpteam">Team</a></li>
+								<li><a class="scroll" href="#wpfolio">Portfolio</a></li>
+								<li><a class="scroll" href="#wpaction">Call to Action</a></li>
+								<li><a class="scroll" href="#wpservice">Service</a></li>
+								<li><a class="scroll" href="#wpfeature">Feature</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div id="doc-wrap" class="col-md-9">
+					<section class="doc-section">
+						<h1 id="intro">Introduction</h1>
+						<div>
+							<p>Starter is so clean and supper flexible One Page Responsive Theme. Starter Bulit with fully functional  Theme  such as slider, team, clients Post Type with modern design trend. It has Six awesome presets with great color combinations.</p>
+							<p>If you are looking for a fully responsive ready theme to fit your next One Page site then Starter is the best choice for you.</p>
+						</div>
+					</section>
+
+					<section class="doc-section">
+						<h1 id="wordpress">Getting Started</h1>
+						<p></p>
+
+						<h3 id="wpinstal">Wordpress Installation</h3>
+						<div>
+							<p>This Theme has been developed  only for Wordprss 3.5 or Higher. So, you need to install wordpress  fast  then use this theme.  Please see the wordpress installation process . Here is the documentation <a href="http://codex.wordpress.org/Installing_WordPress" target="_blank">Wordpress Codex -  Installing Wordpress</a></p>
+						</div>
+
+						<h3 id="wptheme">Wordpress Theme Installation</h3>
+						<div>
+							<p>Theme installation is very easy process. First you need to upload theme files and active it. The Theme file can be uploaded two ways</p>
+							<p class="margin-left"><strong>I. FTP Upload:</strong>  Using your favourite FTP program . Frist you have to unzip theme files then upload into  the folder path <span class="highliter"> /wp-content/themes/</span> on your server  and active it from admin panel.</p>
+							<p class="margin-left"><strong>II. Wordpress Upload:</strong>  From Wordpress Admin Panel go the following path <span class="highliter">Appearance->themes->Install-themes->upload</span> and select  the  zip  theme . Click <span class="highliter">install Now”</span>  and theme will be uploaded and installed.</p>
+						</div>
+					</section>
+
+					<section class="doc-section">
+						<h1 id="starter">Starter Theme Installation</h1>
+						<p>Install Starter Theme by below steps</p>
+
+						<h3 id="starterInstall">starter Installation</h3>
+						<div>
+							<img src="images/How-to-use.png" class="img-responsive" alt="">
+							<p style="text-align:center"><small>Fig: Install starter Step by Step</small></p>
+							<br />
+							<p><strong>Step 1: </strong>In Dashboard click on <span class="highliter">Dasboard => Appearance Menu</span></p>
+							<p><strong>Step 2: </strong>Then click on <span class="highliter">Dasboard => Appearance => Theme Menu</span></p>
+							<p><strong>Step 3: </strong>Then click on <span class="highliter">Install Themes</span> tab.</p>
+							<p><strong>Step 4: </strong>Then click on <span class="highliter">Upload </span> menu.</p>
+							<p><strong>Step 5: </strong>Then click on <span class="highliter">Choose file </span> and select starter.zip file from your computer directory.</p>
+							<p><strong>Step 6: </strong>Now click on <span class="highliter">Install Now</span> button and wait for the installation complete. After successful installation of theme click on active theme click and enjoy theme theme feature.</p>
+
+						</div>
+
+						<h3 id="essPlugins">starter Essential Plugins and Installation</h3>
+						<div>
+							<p>For using all Features you have to install and active all required plugins. All Essential plugins are included in the  starter theme. </p>
+							<p class="margin-left">
+								<ul>
+									<li><span class="highliter">starter Slider</span></li>
+									<li><span class="highliter">starter Team</span></li>
+									<li><span class="highliter">starter Client</span></li>
+									<li><span class="highliter">Themeum Project</span></li>
+								</ul>
+							</p>
+							<p> Install above essential plugins by easy 2 step.</p>
+							<img class="img-responsive" src="images/install_plugin.png"  alt="" />
+							<p style="text-align:center"><small>Fig: Essential plugins installation</small></p>
+							<p><strong>Step 1: </strong>In Dashboard, click on <span class="highliter">Dasboard => Appearance Menu => Install Plugins</span> Menu</p>
+							<p><strong>Step 2: </strong>Then click on <span class="highliter">Install</span> link under plugin title and enjoy the plugins.</p>
+						</div>
+
+						<h3 id="permalink">Setup Permalink(Required)</h3>
+						<div>
+							<p>Make sure  to configure permalink. From admin panel go to the following path <span class="highliter"> Settings->permalik</span> then select  (Post name). </p>
+						</div>
+
+						<h3 id="demoImport">Demo Import</h3>
+						<div>
+							<p><strong>Import Sample Data: </strong>If you want to use sample data for your website then you need to install sample date. See the way how to install Import Sample Data <span class="highliter"> tools->import->wordpress</span> Bottom of the page have wordpress . Click wordpress then you can see the <span class="highliter">Install Now</span></p>
+						</div>
+
+						<h3 id="menusettings">Menu Settings</h3>
+						<div>
+							<p> Its an important part of Starter theme Installation process. Its an important part of Starter theme Installation process. Select your menu for menu location. Goto <span class="highliter"> Dashboard->Appearance->menu</span>. then click on Manage Location and select menu for 2 locations. menu for “Primary Menu” location is mandatory. You can follow below screenshot.</p>
+							<img class="img-responsive" src="images/menu-settings.png">
+						</div>
+
+						<h3 id="homepage">Set Home Page(Required)</h3>
+						<div>
+							<p><strong>Set Static Home Page(Required): </strong>WordPress shows blog posts by default as the front page. If you want to look like demo starter then you need to set Home Page. See the way how to set Static Hope Page <span class="highliter"> Settings->reading</span> . From here select  static page  then for Front page select <span class="highliter">home</span></p>
+							<img class="img-responsive" src="images/reading.png" alt="">
+						</div>
+					</section>
+
+					<section class="doc-section">
+						<h1 id="wppage">How to Create Page</h1>
+						<h3>Create Default Page:</h3>
+						<div>
+							<p>
+							Create page as default page. Change page seeting from Page Settings:<br />
+								<ul>
+									<li>Page Section Type as "Default"</li>
+									<li>You can use section Background color from color Picker.</li>
+									<li>You can disiable page from menu from "Disable From Menu" section</li>
+									<li>You Can Disable Title</li>
+								</ul>
+							</p>
+							<img class="img-responsive" src="images/default.png" alt="">
+						</div>
+
+						<h3>Create Parallax Page:</h3>
+						<div>
+							<p>
+							Change page seeting from Page Settings:<br />
+								<ul>
+									<li>Page Section Type as "Parallax"</li>
+									<li>You can use section Background color from color Picker.</li>
+									<li>You can disiable page from menu from "Disable From Menu" section</li>
+									<li>You Can Disable Title</li>
+									<li>Add parallax Background Url</li>
+								</ul>
+							</p>
+							<img class="img-responsive" src="images/parallax.png" alt="">
+						</div>
+
+						<h3>Create Full-Width Page:</h3>
+						<div>
+							<p>
+							Change page seeting from Page Settings:<br />
+								<ul>
+									<li>Page Section Type as "Full-Width"</li>
+									<li>You can use section Background color from color Picker.</li>
+									<li>You can disiable page from menu from "Disable From Menu" section</li>
+									<li>You Can Disable Title</li>
+								</ul>
+							</p>
+							<img class="img-responsive" src="images/fullwidth.png" alt="">
+						</div>
+
+					</section>
+
+					<section class="doc-section">
+						<h1 id="postslider">Post Type Slider</h1>
+						<div>
+							<img class="img-responsive" src="images/slider.png" alt="">
+							<p><small>Fig: Figure of Post Type Slider</small></p>
+						</div>
+					</section>
+
+					<section class="doc-section">
+						<h1 id="postclient">Post Type Client</h1>
+						<div>
+							<img class="img-responsive" src="images/client.png" alt="">
+							<p><small>Fig: Figure of Post Type Client</small></p>
+						</div>
+					</section>
+
+					<section class="doc-section">
+						<h1 id="postproject">Post Type Project</h1>
+						<div>
+							<img class="img-responsive" src="images/project.png" alt="">
+							<p><small>Fig: Figure of Post Type Project</small></p>
+						</div>
+					</section>
+
+					<section class="doc-section">
+						<h1 id="postteam">Post Type Team</h1>
+						<div>
+							<img class="img-responsive" src="images/team.png" alt="">
+							<p><small>Fig: Figure of Post Type Team</small></p>
+						</div>
+					</section>
+
+					<section class="doc-section">
+						<h1 id="scdoc">Shortcode Documentation</h1>
+						<div>
+							<p>We've added an extended shortcode documentation that details every aspect of all shortcodes. Please see the Documentation very careful for better customization.</p>
+						</div>
+
+						<h3 id="wpclient">Client</h3>
+						<div class="sub-section">
+							<p>This provide the facility of list of clients.</p>
+							<table class="table table-bordered">
+								<tr>
+									<th>Usage Example</th>
+									<th>Attributes</th>
+									<th>Description</th>
+								</tr>
+								<tr>
+									<td>[themeum_client]</td>
+									<td>No attributes</td>
+									<td>Show client list with custom ordering from custom post type client. max number is 16</td>
+								</tr>							
+							</table>
+						</div>
+
+						<h3 id="wpslider">Slider</h3>
+						<div class="sub-section">
+							<p>Beautiful Carousel Slider shortcode for slider post type plugins. You have to install and active starter slider plugins for this sortcode.</p>
+							<table class="table table-bordered">
+								<tr>
+									<th>Usage Example</th>
+									<th>Attributes</th>
+									<th>Description</th>
+								</tr>
+								<tr>
+									<td>[themeum_slider]</td>
+									<td>No attributes</td>
+									<td>Show cute slideshow with maximum 5 slide. sorting is enable in dashboard</td>
+								</tr>							
+							</table>
+						</div>
+
+						<h3 id="wpteam">Team</h3>
+						<div class="sub-section">
+							<p> Create team member design with post tyepe team. custom sorting enable from dashboard</p>
+							<table class="table table-bordered">
+								<tr>
+									<th>Usage Example</th>
+									<th>Attributes</th>
+									<th>Description</th>
+								</tr>
+								<tr>
+									<td>[starter_team]</td>
+									<td>No attributes</td>
+									<td>Show 12 team member according to your ordering. each slide show 4 team member.</td>
+								</tr>							
+							</table>
+						</div>
+
+						<h3 id="wpfolio">Portfolio</h3>
+						<div class="sub-section">
+							<table class="table table-bordered">
+								<tr>
+									<th>Usage Example</th>
+									<th>Attributes</th>
+									<th>Description</th>
+								</tr>
+								<tr>
+									<td>[themeum_project_slider]</td>
+									<td>No attributes</td>
+									<td>show project list</td>
+								</tr>							
+							</table>
+						</div>
+
+						<h3 id="wpaction">Call To Action</h3>
+						<div class="sub-section">
+							<table class="table table-bordered">
+								<tr>
+									<th>Usage Example</th>
+									<th>Attributes</th>
+									<th>Description</th>
+								</tr>
+								<tr>
+									<td>[action title="" link="" button=""] Add Content Here [/action]</td>
+									<td>title, link, button</td>
+									<td>Call to Acction Shortcode</td>
+								</tr>							
+							</table>
+						</div>
+
+						<h3 id="wpservice">Service</h3>
+						<div class="sub-section">
+							<table class="table table-bordered">
+								<tr>
+									<th>Usage Example</th>
+									<th>Attributes</th>
+									<th>Description</th>
+								</tr>
+								<tr>
+									<td>[service icon="" title=""] Add Content Here [/service]</td>
+									<td>icon, title</td>
+									<td>In icon field use font-awosome icon name. </td>
+								</tr>							
+							</table>
+						</div>
+
+						<h3 id="wpfeature">feature</h3>
+						<div class="sub-section">
+							<table class="table table-bordered">
+								<tr>
+									<th>Usage Example</th>
+									<th>Attributes</th>
+									<th>Description</th>
+								</tr>
+								<tr>
+									<td>[feature icon="" title="" color=""] Add Content Here [/feature]</td>
+									<td>icon, title</td>
+									<td>In icon field use font-awosome icon name. In color field use valiue 1 to 8 built-in color</td>
+								</tr>							
+							</table>
+						</div>
+
+					</section>
+				</div>
+			</div>
+			<footer id="footer">
+				<span class="copyright">
+	          		Designed By <a target="_blank" href="http://themeum.com/" title="High Quality Premium Responsive WordPress Themes">Themeum</a>  l    All Rights Reserved.	</span>
+			</footer>
+		</div>
+	</body>
+</html>

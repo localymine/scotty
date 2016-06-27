@@ -1,0 +1,149 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
+body{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 500;
+}
+
+p{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 500;
+	line-height: 26px;
+	font-size: 13px;
+}
+
+h1,h2,h3,h4,h5{
+	font-weight: 400;
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1{
+	font-size: 28px;
+	padding-top: 20px;
+}
+
+h3{
+	font-size: 20px;
+	font-weight: 400;
+	margin-top: 0;
+	padding-top:20px;
+}
+
+.header{
+	background: #3498db url(../images/bottom-pattern.png);
+	text-align: center;
+	color: #ffffff;
+	padding: 0 0 15px 0;
+	z-index: 10;
+}
+
+.logo-text{
+	font-weight: 600;
+}
+
+.doc-slogan{
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+.container{
+	background: #f0f0f0;
+}
+
+#doc-sidebar{
+	padding:0px 30px 40px;
+	background: #f0f0f0;
+}
+
+#doc-sidebar-nav{
+	padding-top: 40px;
+	list-style: none;
+}
+
+#doc-sidebar-nav li{
+}
+
+#doc-sidebar-nav li a{
+	font-weight: 400;
+	line-height: 26px;
+	color: #3498db;
+}
+
+#doc-sidebar-nav li ul li a{
+	font-weight: 400;
+	font-size: 12px;
+	color: #3498db;
+}
+
+#doc-sidebar >ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#doc-sidebar >ul >li{
+	padding: 6px 0 10px 20px;
+	position: relative;
+}
+#doc-sidebar >ul >li:before{
+	content: "\f0c5";
+	line-height: 20px;
+	font-size: 12px;
+	position: absolute;
+	font-family: FontAwesome;
+	left: 0;
+	color: #123664;
+}
+
+#doc-sidebar >ul >li ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#doc-sidebar >ul >li ul li{
+	padding: 6px 0 4px 20px;
+	position: relative;
+}
+
+#doc-sidebar >ul >li ul li:before{
+	content: "\f178";
+	line-height: 20px;
+	font-size: 12px;
+	position: absolute;
+	font-family: FontAwesome;
+	left: 0;
+	color: #123664;
+}
+
+#doc-wrap{
+	padding: 40px;
+	padding-bottom: 40px;
+	background: #ffffff;
+	border-left: 1px solid #D8D8D8;
+	box-shadow: -1px 0px 15px 5px rgba(0, 0, 0, 0.1);
+}
+.doc-section{
+	margin-bottom: 30px;
+}
+.sub-section{
+	margin-bottom: 50px;
+}
+#footer{
+	background: #232323;
+	color: #ffffff;
+	padding: 30px 0;
+	margin: 0 -15px;
+	border-top: 1px solid #000;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+	text-align: center;
+}
+
+.highliter{
+	font-size: 12px;
+	color: #428bca;
+	font-weight: 600;
+}
+
