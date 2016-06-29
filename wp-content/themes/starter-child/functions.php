@@ -1,5 +1,7 @@
 <?php
 
+include 'includes/cpt_acf_definitions.php';
+
 function omw_theme_enqueue_styles() {
 
     $parent_style = 'parent-style';
