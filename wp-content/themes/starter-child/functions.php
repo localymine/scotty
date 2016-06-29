@@ -10,3 +10,11 @@ function omw_theme_enqueue_styles() {
 }
 
 add_action('wp_enqueue_scripts', 'omw_theme_enqueue_styles');
+
+
+if(!function_exists('thm_pagination')):
+    function thm_pagination($pages = '', $range = 2)
+	{  
+    
+    }
+endif;
