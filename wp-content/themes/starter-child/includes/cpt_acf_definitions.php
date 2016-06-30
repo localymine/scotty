@@ -776,11 +776,25 @@ if (function_exists("register_field_group")) {
         'fields' => array(
             array(
                 'key' => 'field_5657396f9fdc8',
-                'label' => 'Image',
-                'name' => 'image',
-                'type' => 'image',
-                'save_format' => 'object',
-                'preview_size' => 'thumbnail',
+                'label' => 'Images',
+                'name' => 'images',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_5775792536473',
+                        'label' => 'Image',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'column_width' => '',
+                        'save_format' => 'object',
+                        'preview_size' => 'thumbnail',
+                        'library' => 'all',
+                    ),
+                ),
+                'row_min' => '',
+                'row_limit' => '',
+                'layout' => 'table',
+                'button_label' => 'Add Row',
             ),
         ),
         'location' => array(
