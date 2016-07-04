@@ -1,4 +1,5 @@
 <?php
+define( 'ACF_LITE', true );
 
 /**
  * Export from CPT UI and ACF
@@ -58,7 +59,7 @@ function cptui_register_my_cpts() {
         "supports" => array("title", "editor", "excerpt"),
     );
     register_post_type("news", $args);
-
+    
 // End of cptui_register_my_cpts()
 }
 
