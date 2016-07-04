@@ -375,7 +375,8 @@ function thm_register_meta_boxes( $meta_boxes )
 				'options'  => array(
 					'default' 	=> __( 'Default', 'themeum' ),
 					'full' 		=> __( 'Full-Width', 'themeum' ),
-					'parallax' 	=> __( 'Parallax', 'themeum' )
+					'parallax' 	=> __( 'Parallax', 'themeum' ),
+					'aboutus' 	=> __( 'About Us', 'themeum' )
 				),
 				// Select multiple values, optional. Default is false.
 				'multiple'    => false,
