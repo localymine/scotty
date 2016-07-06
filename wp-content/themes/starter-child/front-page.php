@@ -1,204 +1,162 @@
-<?php
-/*
- * Template Name: Frontpage
- */
-get_header();
-?>
-<?php
-$current_page_id = get_option('page_on_front'); // get front page id
-// checking menu exist in location "primary"
-if (( $locations = get_nav_menu_locations() ) && $locations['primary']) {
-    $menu = wp_get_nav_menu_object($locations['primary']);
-    $menu_items = wp_get_nav_menu_items($menu->term_id);
+<?php get_header(); ?>
 
-    $post_ids = array();
-    foreach ($menu_items as $items) {
-        if ($items->object == 'page') {
-            $post_ids[] = $items->object_id;
-        }
-    }
+<div id="home" class="page-wrapper full-width light-bg">
+    <div class="page-fullwdth-content">
+        <?php echo do_shortcode('[themeum_slider]') ?>
+    </div>
+</div>
 
-    $args = array('post_type' => 'page', 'post__in' => $post_ids, 'posts_per_page' => count($post_ids), 'orderby' => 'post__in');
-} else {
-    $args = array('post_type' => 'page');
-}
+<section id="company" class="page-wrapper light-bg">
+    <div class="container">
+        <div class="row page-content">
 
-$allPosts = new WP_Query($args); // get pages on menu
+            <?php
+            $args = array(
+                'post_type' => 'company',
+                'posts_per_page' => 8,
+            );
+            $loop = new WP_Query($args);
+            ?>
+            <?php if ($loop->have_posts()): ?>
+                <?php while ($loop->have_posts()): $loop->the_post(); ?>
 
-$parallaxId = array();
-
-if (have_posts()) {
-    // Start the Loop.
-    while ($allPosts->have_posts()) {
-        $allPosts->the_post();
-        // set global $post
-        global $post;
-
-        $separator = get_post_meta($post->ID, 'thm_no_hash', true);
-        $page_section = get_post_meta($post->ID, 'thm_section_type', true);
-        $no_title = get_post_meta($post->ID, 'thm_no_title', true);
-        $menu_disable = get_post_meta($post->ID, 'thm_disable_menu', true);
-        $bg_color = get_post_meta($post->ID, 'thm_bg_color', true);
-
-        $postId = get_the_ID();
-
-        if (( $separator != 1 ) && ( $postId != $current_page_id )) {
-            if ($page_section == 'default') {  // Default Content Page
-                ?>
-                <section id="<?php echo $post->post_name; ?>" class="page-wrapper <?php echo getContrast50($bg_color); ?>" style="background-color:<?php echo $bg_color; ?>">
-                    <div class="container">
-                        <?php
-                        if ($no_title != 1) {
-                            $page_title = get_post_meta($post->ID, 'thm_page_title', true);
-                            $page_subtitle = get_post_meta($post->ID, 'thm_page_subtitle', true);
-                            ?> 
-                            <div class="title-area">
-                                <h2 class="title"><?php
-                                    if ($page_title != '') {
-                                        echo $page_title;
-                                    } else {
-                                        echo get_the_title();
-                                    }
-                                    ?> </h2>
-
-                                <?php if ($page_subtitle != '') { ?>
-                                    <p class="subtitle"><?php echo $page_subtitle; ?></p>
-                                <?php } ?>
-
-                            </div> <!-- .section-title -->
-                        <?php } ?>
-
-                        <div class="row page-content">	
-                            <?php echo do_shortcode(get_the_content()); ?>
-                        </div> <!-- .page-content -->
-                    </div> <!-- .container -->
-                </section>
-                <?php
-            } elseif ($page_section == 'full') {
-                ?>
-                <div id="<?php echo $post->post_name; ?>" class="page-wrapper full-width <?php echo getContrast50($bg_color); ?>" style="background-color:<?php echo $bg_color; ?>">
                     <?php
-                    if ($no_title != 1) {
-                        $page_title = get_post_meta($post->ID, 'thm_page_title', true);
-                        $page_subtitle = get_post_meta($post->ID, 'thm_page_subtitle', true);
-                        ?> 
-                        <div class="title-area">
-                            <h2 class="title"><?php
-                                if ($page_title != '') {
-                                    echo $page_title;
-                                } else {
-                                    echo get_the_title();
-                                }
-                                ?> </h2>
+                    $bg_color = 'background:' . get_field('bg_color') . ';';
+                    $style = 'style="' . $bg_color . '"';
+                    ?>
 
-                            <?php if ($page_subtitle != '') { ?>
-                                <p class="subtitle"><?php echo $page_subtitle; ?></p>
-                            <?php } ?>
-
-                        </div> <!-- .section-title -->
-                    <?php } ?>
-                    <div class="page-fullwdth-content">	
-                        <?php echo do_shortcode(get_the_content()); ?>
-                    </div> <!-- .page-fullwdth-content -->
-                </div> <!-- .page-content -->
-                <?php
-            } elseif ($page_section == 'aboutus') {
-                // Section About Us
-                ?>
-                <section id="<?php echo $post->post_name; ?>" class="page-wrapper <?php echo getContrast50($bg_color); ?>" style="background-color:<?php echo $bg_color; ?>">
-                    <div class="container">
-                        <?php
-                        if ($no_title != 1) {
-                            $page_title = get_post_meta($post->ID, 'thm_page_title', true);
-                            $page_subtitle = get_post_meta($post->ID, 'thm_page_subtitle', true);
-                            ?> 
-                            <div class="title-area">
-                                <h2 class="title"><?php
-                                    if ($page_title != '') {
-                                        echo $page_title;
-                                    } else {
-                                        echo get_the_title();
-                                    }
-                                    ?> </h2>
-
-                                <?php if ($page_subtitle != '') { ?>
-                                    <p class="subtitle"><?php echo $page_subtitle; ?></p>
-                                <?php } ?>
-
-                            </div> <!-- .section-title -->
-                        <?php } ?>
-
-                        <div class="row page-content">	
-                            <?php echo do_shortcode(get_the_content()); ?>
-                        </div> <!-- .page-content -->
-                    </div> <!-- .container -->
-                </section>
-                <?php
-            } else {
-                // Parallax Page
-                $image = get_post_meta($post->ID, 'thm_background_url', true);
-
-                $parallaxId[] = $post->post_name;
-                ?>
-                <section id="<?php echo $post->post_name; ?>" class="parallax parallax-image <?php echo getContrast50($bg_color); ?>" style="background-color: <?php echo $bg_color; ?>; background-image:url('<?php if (isset($image)) echo $image; ?>');">
-                    <div class="overlay"></div>
-                    <div class="container">
-                        <div  class="parallax-content">
-                            <?php
-                            if ($no_title != 1) {
-                                $page_title = get_post_meta($post->ID, 'thm_page_title', true);
-                                $page_subtitle = get_post_meta($post->ID, 'thm_page_subtitle', true);
-                                ?> 
-                                <div class="title-area">
-                                    <h2 class="title"><?php
-                                        if ($page_title != '') {
-                                            echo $page_title;
-                                        } else {
-                                            echo get_the_title();
-                                        }
-                                        ?> </h2>
-
-                                    <?php if ($page_subtitle != '') { ?>
-                                        <p class="subtitle"><?php echo $page_subtitle; ?></p>
-                                    <?php } ?>
-
-                                </div> <!-- .section-title -->
-                            <?php } ?>
-                            <div class="row">
-                                <?php echo do_shortcode(get_the_content()); ?>
-                            </div>
-                        </div> <!-- .parallax-content -->
+                    <div class="feature-box col-md-4 col-sm-6 col-xs-12">
+                        <div class="feature-box-1 pull-left">
+                            <span <?php echo $style ?>>
+                                <i class="fa <?php echo get_field('icon') ?> icon-custom-style"></i>
+                            </span>
+                        </div>
+                        <div class="feature-box-2">
+                            <h3><?php the_title() ?></h3>
+                            <p><?php the_content() ?></p>
+                        </div>
                     </div>
-                </section> <!-- .parallax -->
-                <?php
-            }
-        } // check only for one-page item
-    }
 
-    wp_reset_query();
+                <?php endwhile; ?>
+            <?php endif; ?>
+            <?php wp_reset_postdata() ?>
 
-    if (!empty($parallaxId)) {
+        </div>
+    </div>
+</section>
 
-        function add_my_script() {
-            global $parallaxId;
-            $output = '';
-            $output .='<script type="text/javascript">';
-            $output .='jQuery(document).ready(function($) {';
-            $output .='$(window).load(function(){';
+<div id="news" class="page-wrapper full-width light-bg">
+    <div class="title-area">
+        <h2 class="title"><?php echo omw_get_news_setting('title') ?></h2>
 
-            foreach ($parallaxId as $id) {
-                $output .='$("#' . $id . '").parallax("50%", 0.5);';
-            }
+        <p class="subtitle"><?php echo omw_get_news_setting('sub_title') ?></p>
 
-            $output .='})';
-            $output .='})';
-            $output .='</script>';
-            echo $output;
-        }
+    </div>
+    <div class="page-fullwdth-content">
+        <div id="recent-projects" class="portfolio clearfix">
 
-        add_action('wp_footer', 'add_my_script', 100);
-    } // add parallax
-}
-?>
+            <?php
+            $args = array(
+                'post_type' => 'post',
+                'posts_per_page' => 8,
+            );
+            $loop = new WP_Query($args);
+            ?>
+            <?php if ($loop->have_posts()): ?>
+                <?php while ($loop->have_posts()): $loop->the_post(); ?>
 
-<?php get_footer(); ?>
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="portfolio-item">
+                            <?php the_post_thumbnail('large', array('class' => 'img-responsive')); ?>
+                            <div class="overlay">
+                                <a class="btn-preview" href="<?php the_permalink() ?>"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php endwhile; ?>
+            <?php endif; ?>
+            <?php wp_reset_postdata() ?>
+
+        </div>
+    </div>
+</div>
+
+<div id="business" class="page-wrapper full-width light-bg">
+    <div class="title-area">
+        <h2 class="title"><?php echo omw_get_projects_setting('title') ?></h2>
+
+        <p class="subtitle"><?php echo omw_get_projects_setting('sub_title') ?></p>
+
+    </div>
+    <!-- .section-title -->
+    <div class="page-fullwdth-content">
+        <div id="recent-projects" class="portfolio clearfix">
+
+            <?php
+            $args = array(
+                'post_type' => 'business',
+                'posts_per_page' => 4,
+            );
+            $loop = new WP_Query($args);
+            ?>
+            <?php if ($loop->have_posts()): ?>
+                <?php while ($loop->have_posts()): $loop->the_post(); ?>
+
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="portfolio-item">
+                            <?php the_post_thumbnail('large', array('class' => 'img-responsive')); ?>
+                            <div class="overlay">
+                                <a class="btn-preview" href="<?php echo get_field('link_to') ?>"><i class="fa fa-link"></i></a>
+                                <a class="btn-preview" href="<?php the_permalink() ?>"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php endwhile; ?>
+            <?php endif; ?>
+            <?php wp_reset_postdata() ?>
+
+        </div>
+
+    </div>
+</div>
+
+<section id="service-2" class="page-wrapper dark-bg">
+    <div class="container">
+
+        <div class="title-area">
+            <h2 class="title"><?php echo omw_get_service_setting('title') ?></h2>
+
+            <p class="subtitle"><?php echo omw_get_service_setting('sub_title') ?></p>
+
+        </div>
+        <!-- .section-title -->
+
+        <div class="row page-content"><?php echo omw_get_service_setting('content') ?></div>
+        <!-- .page-content -->
+    </div>
+    <!-- .container -->
+</section>
+
+<section id="team" class="page-wrapper light-bg">
+    <div class="container">
+
+        <div class="title-area">
+            <h2 class="title"><?php echo omw_get_team_setting('title') ?></h2>
+
+            <p class="subtitle"><?php echo omw_get_team_setting('sub_title') ?></p>
+
+        </div>
+        <!-- .section-title -->
+        <div class="row page-content">
+            <?php echo do_shortcode('[starter_team]') ?>
+        </div>
+    </div>
+    <!-- .page-content -->
+</div>
+<!-- .container -->
+</section>
+
+<?php
+get_footer();

@@ -2,6 +2,7 @@
 
 include_once 'includes/cpt_acf_definitions.php';
 include_once 'includes/load_functions.php';
+include_once 'includes/page_options.php';
 
 //add_action('after_setup_theme', 'childtheme_formats', 11);
 
