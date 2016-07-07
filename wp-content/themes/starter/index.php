@@ -1,5 +1,7 @@
 <?php get_header(); ?>
 
+<?php [themeum_slider] ?>
+
 <section id="main" class="container">
     <div class="row">
         <div id="content" class="site-content col-md-8" role="main">
