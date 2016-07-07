@@ -1,6 +1,9 @@
 <?php
 
+define('ACF_LITE', true);
+
 include_once 'includes/cpt_acf_definitions.php';
+include_once 'includes/shortcode/bussiness_product.php';
 include_once 'includes/load_functions.php';
 include_once 'includes/page_options.php';
 
