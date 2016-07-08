@@ -6,6 +6,7 @@ include_once 'includes/cpt_acf_definitions.php';
 include_once 'includes/shortcode/bussiness_product.php';
 include_once 'includes/load_functions.php';
 include_once 'includes/page_options.php';
+include_once 'includes/my_settings.php';
 
 //add_action('after_setup_theme', 'childtheme_formats', 11);
 

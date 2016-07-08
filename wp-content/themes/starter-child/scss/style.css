@@ -1,0 +1,18 @@
+#home {
+  padding: 0; }
+
+#news.page-wrapper {
+  padding-bottom: 0; }
+
+#business.page-wrapper {
+  padding-bottom: 0; }
+
+.navbar-brand span {
+  font-size: 32px; }
+
+#contact-info-form label {
+  font-weight: normal; }
+  #contact-info-form label:after {
+    content: ":"; }
+
+/*# sourceMappingURL=style.css.map */

@@ -19,3 +19,16 @@
         font-size: 32px;
     }
 }
+
+#contact-info-form{
+    label{
+        font-weight: normal;
+        float: left;
+        &:after{
+            content: ":";
+        }
+        .mandatory{
+            color: #d02c21;
+        }
+    }
+}
