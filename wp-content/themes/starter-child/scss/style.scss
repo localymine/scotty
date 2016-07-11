@@ -1,3 +1,10 @@
+textarea { resize:both; } /* none|horizontal|vertical|both */
+textarea.vert { resize:vertical; }
+textarea.noResize { resize:none; }
+/*constrain the width and height of the textarea element*/
+textarea.ctrl_vert { resize:vertical; max-height:300px; min-height:200px; }
+textarea.ctrl_horiz { resize:horizontal; max-width:400px; min-width:200px; }
+
 #home{
     padding: 0;
 }
@@ -31,4 +38,30 @@
             color: #d02c21;
         }
     }
+    #re_title{
+        width: 20%;
+    }
+}
+
+.portfolio-item{
+    .ctitle{
+        text-align: center;
+    }
+}
+
+.busi-tax{
+    .page-title{
+        &.uline{
+            border-bottom: 1px solid #005C82;
+        }
+    }
+}
+
+.more-products{
+    margin-top: 60px;
+    text-align: center;
+}
+
+.w250{
+    min-width: 250px;
 }

@@ -9,7 +9,7 @@ get_header();
     <?php while (have_posts()) : the_post(); ?>
         <section id="main" class="container">
             <div class="row">
-                <div id="content" class="site-content col-md-8" role="main">
+                <div id="content" class="site-content col-md-4" role="main">
 
                     <article id="post-<?php the_ID() ?>" class="post-<?php the_ID() ?> post type-post status-publish format-gallery hentry category-uncategorized post_format-post-format-gallery">
                         <header class="entry-header">
@@ -52,40 +52,51 @@ get_header();
                                 </a>
                             </div>
 
-                            <h2 class="entry-title">
-                                <a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a>
-                            </h2>
-
-                            <div class="entry-meta">
-                                <ul>
-                                    <li class="date"><i class="fa fa-clock-o"></i>
-                                        <time class="entry-date" datetime="<?php echo get_the_date('M, d Y h:i:s T') ?>"><?php echo get_the_date('M, d Y') ?></time>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <!--/.entry-meta -->
-
                         </header>
                         <!--/.entry-header -->
-
-                        <div class="entry-content">
-                            <?php the_content() ?>
-                        </div>
-                        <!--/.entry-content -->
 
                     </article>
                     <!--/#post -->
 
                 </div>
                 <!-- #content -->
+
+
+
+                <div id="entry-content" class="col-md-8" role="entry-content">
+
+                    <h2 class="entry-title">
+                        <a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a>
+                    </h2>
+
+                    <div class="entry-meta">
+                        <ul>
+                            <li class="date"><i class="fa fa-clock-o"></i>
+                                <time class="entry-date" datetime="<?php echo get_the_date('M, d Y h:i:s T') ?>"><?php echo get_the_date('M, d Y') ?></time>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!--/.entry-meta -->
+
+                    <div class="entry-content">
+
+                        <?php the_content() ?>
+                    </div>
+
+                </div>
+                <!--/.entry-content -->
             <?php endwhile; ?>
         <?php endif; ?>
 
-        <?php get_sidebar('product') ?>
-                
+
     </div>
     <!-- .row -->
+
+    <div class="clearfix post-navigation">
+        <?php previous_post_link('<span class="previous-post pull-left">%link</span>', '<i class="fa fa-angle-double-left"></i> previous article'); ?>
+        <?php next_post_link('<span class="next-post pull-right">%link</span>', 'next article <i class="fa fa-angle-double-right"></i>'); ?>
+    </div> <!-- .post-navigation -->
 </section>
 
 <?php get_footer(); ?>

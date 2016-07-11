@@ -9,7 +9,7 @@ require_once 'includes/lib/ReCaptcha/src/autoload.php';
 
 global $omw_theme_settings;
 
-$secret = $omw_theme_settings->ct_recaptcha_private_key;
+$secret = isset($omw_theme_settings->ct_recaptcha_private_key) ? $omw_theme_settings->ct_recaptcha_private_key : '';
 
 if (isset($_POST['g-recaptcha-response'])) {
 
@@ -124,13 +124,13 @@ $page_title = get_post_meta($post->ID, 'thm_page_title', true);
                             <div class="form-group req">
                                 <label for="re_email" class="col-sm-4 control-label">Email<span class="mandatory">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" id="re_email" name="re_email" value="" placeholder="Email" class="form-control" />
+                                    <input type="text" id="re_email" name="re_email" value="" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group req">
                                 <label for="re_content" class="col-sm-4 control-label">Content<span class="mandatory">*</span></label>
                                 <div class="col-sm-8">
-                                    <textarea id="re_content" name="re_content" class="form-control vert confinedSpace"></textarea>
+                                    <textarea id="re_content" name="re_content" class="form-control ctrl_vert"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">

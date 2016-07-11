@@ -16,7 +16,7 @@ function cptui_register_my_bussiness_product_cpts() {
         "show_ui" => true,
         "show_in_rest" => false,
         "rest_base" => "",
-        "has_archive" => false,
+        "has_archive" => true,
         "show_in_menu" => true,
         "exclude_from_search" => false,
         "capability_type" => "post",
@@ -79,8 +79,8 @@ function cptui_register_my_taxes_business_tax() {
         "show_in_quick_edit" => false,
     );
     register_taxonomy("business_tax", array("business", "product"), $args);
-    
-    register_taxonomy("project_tag", array("project", "product"), array('labels' => array('name' => _x('Categories', 'taxonomy general name'))));
+
+//    register_taxonomy("project_tag", array("project", "product"), array('labels' => array('name' => _x('Categories', 'taxonomy general name'))));
 
 // End cptui_register_my_taxes_business_tax()
 }
@@ -117,18 +117,18 @@ if (function_exists("register_field_group")) {
         'id' => 'acf_business',
         'title' => 'Business',
         'fields' => array(
-            array(
-                'key' => 'field_577d44405c951',
-                'label' => 'Link To',
-                'name' => 'link_to',
-                'type' => 'text',
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'formatting' => 'none',
-                'maxlength' => '',
-            ),
+//            array(
+//                'key' => 'field_577d44405c951',
+//                'label' => 'Link To',
+//                'name' => 'link_to',
+//                'type' => 'text',
+//                'default_value' => '',
+//                'placeholder' => '',
+//                'prepend' => '',
+//                'append' => '',
+//                'formatting' => 'none',
+//                'maxlength' => '',
+//            ),
         ),
         'location' => array(
             array(
@@ -215,14 +215,18 @@ function omw_load_business_shortcode($atts, $content = null) {
 
     $a = shortcode_atts(array(
         'post_per_page' => 4,
+        'orderby' => 'ID',
+        'order' => 'ASC',
             ), $atts);
 
     $output .= '<div class="page-fullwdth-content">';
-    $output .= '<div id="recent-projects" class="portfolio clearfix">';
+    $output .= '<div id="business" class="portfolio clearfix">';
 
     $args = array(
         'post_type' => 'business',
-        'posts_per_page' => $a['posts_per_page'],
+        'posts_per_page' => $a['post_per_page'],
+        'orderby' => $a['orderby'],
+        'order' => $a['order'],
     );
     $loop = new WP_Query($args);
 
@@ -230,13 +234,25 @@ function omw_load_business_shortcode($atts, $content = null) {
         while ($loop->have_posts()): $loop->the_post();
             $output .= '<div class="col-xs-6 col-sm-3">';
             $output .= '<div class="portfolio-item">';
-            $output .= get_the_post_thumbnail('large', array('class' => 'img-responsive'));
+            $output .= get_the_post_thumbnail(get_the_ID(), 'large', array('class' => 'img-responsive'));
             $output .= '<div class="overlay">';
-            $output .= '<a class="btn-preview" href="' . get_field('link_to') . '"><i class="fa fa-link"></i></a>';
-            $output .= '<a class="btn-preview" href="' . get_the_permalink() . '"><i class="fa fa-link"></i></a>';
+
+            $terms = wp_get_post_terms(get_the_ID(), 'business_tax', array('hide_empty' => 1));
+            foreach ($terms as $term) {
+                $output .= '<a class="btn-preview" href="' . get_term_link($term) . '"><i class="fa fa-link"></i></a>';
+            }
+
             $output .= '</div>';
+            $output .= '<h3 class="ctitle">' . get_the_title() . '</h3>';
             $output .= '</div>';
             $output .= '</div>';
         endwhile;
     endif;
+
+    $output .= '</div>';
+    $output .= '</div>';
+
+    wp_reset_postdata();
+
+    return $output;
 }
