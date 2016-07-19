@@ -217,6 +217,7 @@ function omw_load_business_shortcode($atts, $content = null) {
         'post_per_page' => 4,
         'orderby' => 'ID',
         'order' => 'ASC',
+        'no_title' => FALSE,
             ), $atts);
 
     $output .= '<div class="page-fullwdth-content">';
@@ -243,7 +244,9 @@ function omw_load_business_shortcode($atts, $content = null) {
             }
 
             $output .= '</div>';
-            $output .= '<h3 class="ctitle">' . get_the_title() . '</h3>';
+            if (!$a['no_title']) {
+                $output .= '<h3 class="ctitle">' . get_the_title() . '</h3>';
+            }
             $output .= '</div>';
             $output .= '</div>';
         endwhile;

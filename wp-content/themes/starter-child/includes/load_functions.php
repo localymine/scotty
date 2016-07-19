@@ -1,7 +1,5 @@
 <?php
 
-include 'customize_theme.php';
-
 /**
  * load parent's style
  */
