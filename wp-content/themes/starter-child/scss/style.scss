@@ -1,3 +1,55 @@
+$nopadding: (left: 0, right: 0, top: 0, bottom: 0);
+@each $name, $value in $nopadding{
+    .nopadding-#{$name} {
+        padding-#{$name}: $value;
+    }
+    .nomargin-#{$name}{
+        margin-#{$name}: $value;
+    }
+}
+.nopadding{
+    padding: 0;
+}
+.nomargin{
+    margin: 0;
+}
+
+$margins: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem);
+@each $name, $value in $margins {
+    .margin-top-#{$name} {
+        margin-top: $value;
+    }
+
+    .margin-bottom-#{$name} {
+        margin-bottom: $value;
+    }
+}
+
+$paddings: (xs: 0.5rem, sm: 1rem, md: 1.5rem, lg: 2rem, xl: 2.5rem, xxl: 3rem);
+@each $name, $value in $paddings {
+    .padding-top-#{$name} {
+        padding-top: $value;
+    }
+
+    .padding-bottom-#{$name} {
+        padding-bottom: $value;
+    }
+
+    .padding-left-#{$name} {
+        padding-left: $value;
+    }
+
+    .padding-right-#{$name} {
+        padding-right: $value;
+    }
+
+    .padding-lt-rt-#{$name} {
+        padding-left: $value;
+        padding-right: $value;
+    }
+}
+
+
 textarea { resize:both; } /* none|horizontal|vertical|both */
 textarea.vert { resize:vertical; }
 textarea.noResize { resize:none; }
@@ -80,5 +132,46 @@ textarea.ctrl_horiz { resize:horizontal; max-width:400px; min-width:200px; }
         margin-top: 0;
         font-size: 2em;
         text-shadow: 0 3px 2px rgba(0, 0, 0, .4);
+    }
+}
+
+.business{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    background-color: #F0EDEC;
+    .page-content{
+        padding: 1em 10% 1em 10%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .bu-prod{
+        padding: 1em 10% 1em 10%;
+        background: #938B86;
+        margin-top: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+.client-item{
+    display: block;
+    height: 150px;
+    overflow: hidden;
+    img{
+        text-align: center;
+        position: relative;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+}
+
+#footer{
+    .footer-logo{
+        font-weight: bold;
+    }
+    .footer-nav{
+        
     }
 }

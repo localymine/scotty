@@ -81,7 +81,6 @@ function cptui_register_my_taxes_business_tax() {
     register_taxonomy("business_tax", array("business", "product"), $args);
 
 //    register_taxonomy("project_tag", array("project", "product"), array('labels' => array('name' => _x('Categories', 'taxonomy general name'))));
-
 // End cptui_register_my_taxes_business_tax()
 }
 
@@ -117,18 +116,149 @@ if (function_exists("register_field_group")) {
         'id' => 'acf_business',
         'title' => 'Business',
         'fields' => array(
-//            array(
-//                'key' => 'field_577d44405c951',
-//                'label' => 'Link To',
-//                'name' => 'link_to',
-//                'type' => 'text',
-//                'default_value' => '',
-//                'placeholder' => '',
-//                'prepend' => '',
-//                'append' => '',
-//                'formatting' => 'none',
-//                'maxlength' => '',
-//            ),
+            array(
+                'key' => 'field_578ef69a5f307',
+                'label' => 'Number Of Column',
+                'name' => 'number_of_column',
+                'type' => 'select',
+                'choices' => array(
+                    'one' => 'One',
+                    'two' => 'Two',
+                    'three' => 'Three',
+                ),
+                'default_value' => '',
+                'allow_null' => 0,
+                'multiple' => 0,
+            ),
+            array(
+                'key' => 'field_578ef72f5f308',
+                'label' => 'One Column',
+                'name' => 'one_column',
+                'type' => 'repeater',
+                'conditional_logic' => array(
+                    'status' => 1,
+                    'rules' => array(
+                        array(
+                            'field' => 'field_578ef69a5f307',
+                            'operator' => '==',
+                            'value' => 'one',
+                        ),
+                    ),
+                    'allorany' => 'all',
+                ),
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_578ef7635f309',
+                        'label' => 'Content',
+                        'name' => 'col_1',
+                        'type' => 'wysiwyg',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'toolbar' => 'basic',
+                        'media_upload' => 'yes',
+                    ),
+                ),
+                'row_min' => 1,
+                'row_limit' => 1,
+                'layout' => 'table',
+                'button_label' => 'Add Row',
+            ),
+            array(
+                'key' => 'field_578ef7a65f30a',
+                'label' => 'Two Columns',
+                'name' => 'two_columns',
+                'type' => 'repeater',
+                'conditional_logic' => array(
+                    'status' => 1,
+                    'rules' => array(
+                        array(
+                            'field' => 'field_578ef69a5f307',
+                            'operator' => '==',
+                            'value' => 'two',
+                        ),
+                    ),
+                    'allorany' => 'all',
+                ),
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_578ef7bf5f30b',
+                        'label' => 'Content',
+                        'name' => 'col_1',
+                        'type' => 'wysiwyg',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'toolbar' => 'basic',
+                        'media_upload' => 'yes',
+                    ),
+                    array(
+                        'key' => 'field_578ef7f15f30c',
+                        'label' => 'Content',
+                        'name' => 'col_2',
+                        'type' => 'wysiwyg',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'toolbar' => 'basic',
+                        'media_upload' => 'yes',
+                    ),
+                ),
+                'row_min' => 1,
+                'row_limit' => 1,
+                'layout' => 'table',
+                'button_label' => 'Add Row',
+            ),
+            array(
+                'key' => 'field_578ef8765f30e',
+                'label' => 'Three Columns',
+                'name' => 'three_columns',
+                'type' => 'repeater',
+                'conditional_logic' => array(
+                    'status' => 1,
+                    'rules' => array(
+                        array(
+                            'field' => 'field_578ef69a5f307',
+                            'operator' => '==',
+                            'value' => 'three',
+                        ),
+                    ),
+                    'allorany' => 'all',
+                ),
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_578ef88d5f30f',
+                        'label' => 'Content',
+                        'name' => 'col_1',
+                        'type' => 'wysiwyg',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'toolbar' => 'basic',
+                        'media_upload' => 'yes',
+                    ),
+                    array(
+                        'key' => 'field_578ef8a35f310',
+                        'label' => 'Content',
+                        'name' => 'col_2',
+                        'type' => 'wysiwyg',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'toolbar' => 'basic',
+                        'media_upload' => 'yes',
+                    ),
+                    array(
+                        'key' => 'field_578ef8ad5f311',
+                        'label' => 'Content',
+                        'name' => 'col_3',
+                        'type' => 'wysiwyg',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'toolbar' => 'basic',
+                        'media_upload' => 'yes',
+                    ),
+                ),
+                'row_min' => 1,
+                'row_limit' => 1,
+                'layout' => 'table',
+                'button_label' => 'Add Row',
+            ),
         ),
         'location' => array(
             array(
@@ -142,10 +272,6 @@ if (function_exists("register_field_group")) {
             ),
         ),
         'options' => array(
-            'position' => 'normal',
-            'layout' => 'no_box',
-            'hide_on_screen' => array(
-            ),
         ),
         'menu_order' => 0,
     ));
@@ -217,7 +343,8 @@ function omw_load_business_shortcode($atts, $content = null) {
         'post_per_page' => 4,
         'orderby' => 'ID',
         'order' => 'ASC',
-        'no_title' => FALSE,
+        'set_title' => 'yes',
+        'set_bookmark' => 'yes',
             ), $atts);
 
     $output .= '<div class="page-fullwdth-content">';
@@ -240,11 +367,16 @@ function omw_load_business_shortcode($atts, $content = null) {
 
             $terms = wp_get_post_terms(get_the_ID(), 'business_tax', array('hide_empty' => 1));
             foreach ($terms as $term) {
-                $output .= '<a class="btn-preview" href="' . get_term_link($term) . '"><i class="fa fa-link"></i></a>';
+                if ($a['set_bookmark'] === 'yes') {
+                    $url_bookmark_business = 'business/#' . $term->slug;
+                    $output .= '<a class="btn-preview goto" href="#' . $term->slug . '" role="tab"><i class="fa fa-link"></i></a>';
+                } else {
+                    $output .= '<a class="btn-preview goto" href="' . get_term_link($term) . '"><i class="fa fa-link"></i></a>';
+                }
             }
 
             $output .= '</div>';
-            if (!$a['no_title']) {
+            if ($a['set_title'] === 'yes') {
                 $output .= '<h3 class="ctitle">' . get_the_title() . '</h3>';
             }
             $output .= '</div>';
