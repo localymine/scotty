@@ -98,18 +98,18 @@ $page_title = get_post_meta($post->ID, 'thm_page_title', true);
                     <div class="entry-content">
 
                         <form id="contact-info-form" name="contact-info-form" method="post" action="<?php bloginfo('url') ?>/contact" class="form-horizontal">
-                            <div class="form-group req">
+                            <div class="form-group">
                                 <label for="re_title" class="col-sm-4 control-label">Form of address & title<span class="mandatory">*</span></label>
                                 <div class="col-sm-8">
                                     <select id="re_title" name="re_title" class="form-control">
-                                        <option value="0">Select Title</option>
+                                        <option value="">Select Title</option>
                                         <option value="1">Mr.</option>
                                         <option value="2">Ms.</option>
                                         <option value="3">Dr.</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group req">
+                            <div class="form-group">
                                 <label for="re_name" class="col-sm-4 control-label">First and last name<span class="mandatory">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" id="re_name" name="re_name" value="" class="form-control" />
@@ -121,16 +121,22 @@ $page_title = get_post_meta($post->ID, 'thm_page_title', true);
                                     <input type="text" id="re_company" name="re_company" value="" class="form-control" />
                                 </div>
                             </div>
-                            <div class="form-group req">
+                            <div class="form-group">
                                 <label for="re_email" class="col-sm-4 control-label">Email<span class="mandatory">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" id="re_email" name="re_email" value="" class="form-control" />
                                 </div>
                             </div>
-                            <div class="form-group req">
+                            <div class="form-group">
                                 <label for="re_content" class="col-sm-4 control-label">Content<span class="mandatory">*</span></label>
                                 <div class="col-sm-8">
                                     <textarea id="re_content" name="re_content" class="form-control ctrl_vert"></textarea>
+                                </div>
+                            </div>
+                            <!-- #messages is where the messages are placed inside -->
+                            <div class="form-group">
+                                <div class="col-md-9 col-md-offset-3">
+                                    <div id="messages"></div>
                                 </div>
                             </div>
                             <div class="form-group">
