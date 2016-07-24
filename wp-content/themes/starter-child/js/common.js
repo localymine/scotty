@@ -4,6 +4,8 @@ jQuery(document).ready(function ($) {
     $('.menu-item-has-children ul.sub-menu li a, .goto').on('click', function () {
         var target = this.hash,
                 $target = $(target);
+                
+                console.log($target)
 
         $('html, body').stop().animate({
             'scrollTop': $target.offset().top - 70
@@ -61,12 +63,13 @@ jQuery(document).ready(function ($) {
 
 jQuery(window).load(function () {
     'use strict';
-    var target = this.hash,
-            $target = window.location.hash;
+    var target = window.location.hash,
+    $target = jQuery(target);
 
-    $('html, body').stop().animate({
-        'scrollTop': $target.offset().top - 70
+    jQuery('html, body').stop().animate({
+        'scrollTop': $target.offset().top - 170
     }, 900, 'swing', function () {
         window.location.hash = target;
     });
+    
 });
