@@ -65,11 +65,13 @@ jQuery(window).load(function () {
     'use strict';
     var target = window.location.hash,
     $target = jQuery(target);
-
-    jQuery('html, body').stop().animate({
-        'scrollTop': $target.offset().top - 170
-    }, 900, 'swing', function () {
-        window.location.hash = target;
-    });
+    
+    if($target.selector != ''){
+        jQuery('html, body').stop().animate({
+            'scrollTop': $target.offset().top - 170
+        }, 900, 'swing', function () {
+            window.location.hash = target;
+        });
+    }
     
 });
